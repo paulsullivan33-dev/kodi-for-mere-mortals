@@ -1,0 +1,8 @@
+=== apt-get download-only closure for kodi ===
+Fri Oct 30 22:51:26 UTC 2026
+Suggested packages:
+  fonts-noto-ui-core
+Recommended packages:
+  kodi-repository-kodi | kodi-repository kodi-visualization-spectrum
+  fonts-roboto-unhinted javascript-common
+E: Archives directory /home/hatch/workspace/kodi-labwork/debs/partial is missing. - Acquire (2: No such file or directory)

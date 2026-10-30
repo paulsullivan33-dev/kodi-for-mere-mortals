@@ -1,0 +1,35 @@
+=== t01: first run under Xvfb (shared :99 display, 1024x600 requested; an existing Xvfb owned the display) ===
+Fri Oct 30 22:53:45 UTC 2026
+2026-10-30 22:52:52.947 T:77122    info <general>: Starting Kodi from Debian (20.5 Debian package version: 2:20.5+dfsg-1ubuntu1). Platform: Linux x86 64-bit
+2026-10-30 22:52:53.530 T:77122    info <general>: GL_RENDERER = llvmpipe (LLVM 20.1.2, 256 bits)
+2026-10-30 22:52:53.530 T:77122    info <general>: GL_VERSION = 4.5 (Compatibility Profile) Mesa 25.2.8-0ubuntu0.24.04.4
+2026-10-30 22:52:54.031 T:77141    info <general>: CAESinkALSA - Unable to open device "default" for playback
+2026-10-30 22:52:55.603 T:77141    info <general>: CAESinkALSA - Unable to open device "default" for playback
+2026-10-30 22:52:57.200 T:77141    info <general>: CAESinkALSA - Unable to open device "default" for playback
+
+--- userdata/ created by first run ---
+Database
+RssFeeds.xml
+Savestates
+Thumbnails
+addon_data
+guisettings.xml
+keymaps
+library
+peripheral_data
+playlists
+profiles.xml
+
+--- Database/ ---
+Addons33.db
+CDDB
+Epg16.db
+MyMusic82.db
+MyVideos121.db
+TV40.db
+Textures13.db
+ViewModes6.db
+
+--- clean shutdown on SIGTERM ---
+2026-10-30 22:53:26.187 T:77122    info <general>: Stopping the application...
+2026-10-30 22:53:27.289 T:77122    info <general>: Exiting the application...

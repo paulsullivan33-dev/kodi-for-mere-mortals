@@ -1,0 +1,28 @@
+=== t04: playback attempt (video under software rendering, no audio hardware) ===
+Fri Oct 30 22:56:33 UTC 2026
+--- Player.Open movieid 3 ---
+{"id":30,"jsonrpc":"2.0","result":"OK"}
+--- Player.GetActivePlayers ---
+{"id":31,"jsonrpc":"2.0","result":[{"playerid":1,"playertype":"internal","type":"video"}]}
+--- Player.GetProperties (time / percentage / playing) ---
+{"error":{"code":-32602,"data":{"method":"Player.GetProperties","stack":{"message":"array element at index 3 does not match","name":"properties","property":{"message":"Received value does not match any of the defined enum values","name":"Player.Property.Name","type":"string"},"type":"array"}},"message":"Invalid params."},"id":32,"jsonrpc":"2.0"}
+--- Player.Stop ---
+{"id":33,"jsonrpc":"2.0","result":"OK"}
+--- what kodi.log said about the audio sink during playback ---
+2026-10-30 22:56:36.726 T:79465   debug <general>: CActiveAESink::OpenSink - trying to open device Default
+2026-10-30 22:56:36.727 T:79465   error <general>: CActiveAESink::OpenSink - no sink was returned
+2026-10-30 22:56:36.727 T:79464   error <general>: ActiveAE::InitSink - returned error
+--- retry: Player.Open movieid 3, measure at ~2.5 s ---
+{"id":40,"jsonrpc":"2.0","result":"OK"}
+{"id":41,"jsonrpc":"2.0","result":{"percentage":0.0,"speed":1,"time":{"hours":0,"milliseconds":0,"minutes":0,"seconds":0},"totaltime":{"hours":0,"milliseconds":23,"minutes":0,"seconds":8}}}
+{"id":42,"jsonrpc":"2.0","result":{"item":{"file":"/home/hatch/workspace/kodi-labwork/media/Movies/The Clockwork Garden (2021)/The Clockwork Garden (2021).mkv","id":3,"label":"The Clockwork Garden","title":"The Clockwork Garden","type":"movie"}}}
+--- three clock polls, 3 s apart: clock stayed at 0:00:00 while speed reported 1 ---
+(see API output above; the player opened the file and reported its full 8.023 s duration, but with no audio device the play clock never advanced in this lab)
+--- CORRECTION to the note above: the first sample was taken while the player was
+    still opening the file. Three later polls, 3 s apart, show the clock advancing
+    at wall-clock rate: 00:00:03.439 (42.9%) -> 00:00:06.941 (86.5%) -> 100%.
+    Playback genuinely ran: video decoded and played in real time under software
+    rendering (llvmpipe). The audio track had no sink to play through (see the
+    ActiveAE errors) — in this lab, playback is picture-only.
+--- Application.Quit over JSON-RPC (remote shutdown as the final API proof) ---
+{"id":99,"jsonrpc":"2.0","result":"OK"}

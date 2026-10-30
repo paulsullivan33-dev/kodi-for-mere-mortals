@@ -1,0 +1,27 @@
+=== t03: library scan with the local-information scraper ===
+Fri Oct 30 22:55:38 UTC 2026
+--- VideoLibrary.Scan ---
+{"id":1,"jsonrpc":"2.0","result":"OK"}
+--- VideoLibrary.GetMovies (title, year, director, plot) ---
+{"id":2,"jsonrpc":"2.0","result":{"limits":{"end":3,"start":0,"total":3},"movies":[{"director":["Tomas Reyes"],"file":"/home/hatch/workspace/kodi-labwork/media/Movies/A Field Guide to Clouds (2019)/A Field Guide to Clouds (2019).mkv","genre":["Documentary"],"label":"A Field Guide to Clouds","movieid":1,"plot":"Two weather watchers spend a summer naming every cloud over the valley and arguing about most of them.","title":"A Field Guide to Clouds","year":2019},{"director":["Priya Nair"],"file":"/home/hatch/workspace/kodi-labwork/media/Movies/Summer at the Observatory (2023)/Summer at the Observatory (2023).mkv","genre":["Drama"],"label":"Summer at the Observatory","movieid":2,"plot":"Night-shift astronomers open the old dome to the village for one last summer of public viewings.","title":"Summer at the Observatory","year":2023},{"director":["Ingrid Halvorsen"],"file":"/home/hatch/workspace/kodi-labwork/media/Movies/The Clockwork Garden (2021)/The Clockwork Garden (2021).mkv","genre":["Documentary"],"label":"The Clockwork Garden","movieid":3,"plot":"A gardener builds a mechanical flower that opens when the sun rises, and the whole street comes to watch it wake.","title":"The Clockwork Garden","year":2021}]}}
+--- VideoLibrary.GetTVShows ---
+{"id":3,"jsonrpc":"2.0","result":{"limits":{"end":1,"start":0,"total":1},"tvshows":[{"label":"The Night Train","plot":"The overnight train from the coast to the capital, and the strangers who ride it.","title":"The Night Train","tvshowid":1,"year":1970}]}}
+--- VideoLibrary.GetEpisodes ---
+{"id":4,"jsonrpc":"2.0","result":{"episodes":[{"episode":1,"episodeid":1,"label":"1x01. Departure","plot":"A sleeper car attendant starts her last week on the route.","season":1,"showtitle":"The Night Train","title":"Departure"},{"episode":2,"episodeid":2,"label":"1x02. The Border Stop","plot":"A long delay at the border gives two passengers time to compare maps.","season":1,"showtitle":"The Night Train","title":"The Border Stop"}],"limits":{"end":2,"start":0,"total":2}}}
+--- the same library, straight from MyVideos121.db ---
+movie|A Field Guide to Clouds|
+movie|Summer at the Observatory|
+movie|The Clockwork Garden|
+episode|Departure|1|1
+episode|The Border Stop|1|2
+tvshow|The Night Train|
+5 rows in files table
+--- scanner lines from kodi.log ---
+2026-10-30 22:55:13.413 T:79421    info <general>: CAddonMgr::FindAddons: metadata.local v1.0.1 installed
+2026-10-30 22:55:21.451 T:79500   debug <general>: ADDONS: update check: addonID = metadata.local / Origin = b6a50484-93a0-4afb-a01c-8d17e059feda / Version = 1.0.1
+2026-10-30 22:55:38.378 T:79511    info <general>: VideoInfoScanner: Starting scan ..
+2026-10-30 22:55:38.399 T:79511   debug <general>: VideoInfoScanner: Scanning dir '/home/hatch/workspace/kodi-labwork/media/Movies/' as not in the database
+2026-10-30 22:55:38.409 T:79511   debug <general>: VideoInfoScanner: No (new) information was found in dir /home/hatch/workspace/kodi-labwork/media/Movies/
+2026-10-30 22:55:38.418 T:79511   debug <general>: VideoInfoScanner: Scanning dir '/home/hatch/workspace/kodi-labwork/media/Movies/A Field Guide to Clouds (2019)/' as not in the database
+2026-10-30 22:55:38.421 T:79511   debug <general>: VideoInfoScanner: Found matching full NFO file: /home/hatch/workspace/kodi-labwork/media/Movies/A Field Guide to Clouds (2019)/A Field Guide to Clouds (2019).nfo
+2026-10-30 22:55:38.459 T:79511   debug <general>: VideoInfoScanner: Extracted filestream details from video file /home/hatch/workspace/kodi-labwork/media/Movies/A Field Guide to Clouds (2019)/A Field Guide to Clouds (2019).mkv

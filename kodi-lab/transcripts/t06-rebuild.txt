@@ -1,0 +1,10 @@
+=== t06: rebuild from files + NFO after deleting the video database ===
+Fri Oct 30 23:00:24 UTC 2026
+--- VideoLibrary.Scan on the rebuilt database ---
+{"id":1,"jsonrpc":"2.0","result":"OK"}
+--- GetTVShows: has <premiered> fixed the year? ---
+{"id":2,"jsonrpc":"2.0","result":{"limits":{"end":1,"start":0,"total":1},"tvshows":[{"label":"The Night Train","title":"The Night Train","tvshowid":1,"year":2022}]}}
+--- GetMovies count after rebuild ---
+{"id":3,"jsonrpc":"2.0","result":{"limits":{"end":3,"start":0,"total":3},"movies":[{"label":"A Field Guide to Clouds","movieid":1,"title":"A Field Guide to Clouds"},{"label":"Summer at the Observatory","movieid":2,"title":"Summer at the Observatory"},{"label":"The Clockwork Garden","movieid":3,"title":"The Clockwork Garden"}]}}
+--- GetEpisodes count after rebuild ---
+{"id":4,"jsonrpc":"2.0","result":{"episodes":[{"episodeid":1,"label":"1x01. Departure","title":"Departure"},{"episodeid":2,"label":"1x02. The Border Stop","title":"The Border Stop"}],"limits":{"end":2,"start":0,"total":2}}}

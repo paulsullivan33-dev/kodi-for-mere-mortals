@@ -1,0 +1,47 @@
+=== t05: profiles ===
+Fri Oct 30 22:57:45 UTC 2026
+--- Profiles.GetProfiles ---
+{"id":1,"jsonrpc":"2.0","result":{"limits":{"end":2,"start":0,"total":2},"profiles":[{"label":"Master user","lockmode":0,"thumbnail":""},{"label":"Guest Room","lockmode":0,"thumbnail":""}]}}
+--- Profiles.GetCurrentProfile ---
+{"id":2,"jsonrpc":"2.0","result":{"label":"Master user"}}
+--- Profiles.LoadProfile 'Guest Room' ---
+{"id":3,"jsonrpc":"2.0","result":"OK"}
+--- after the switch ---
+
+--- the guest profile's own userdata tree ---
+find: 'home/.kodi/userdata/profiles': No such file or directory
+--- guest's own (empty) video database ---
+Error: unable to open database "home/.kodi/userdata/profiles/Guest Room/Database/MyVideos121.db": unable to open database file
+--- the failed load, from kodi.log (profile folder missing) ---
+2026-10-30 22:57:45.848 T:80420    info <general>: special://profile/ is mapped to: special://masterprofile/profiles/Guest Room/
+2026-10-30 22:57:45.848 T:80420   error <general>: CSettings: unable to load settings from special://profile/guisettings.xml, creating new default settings
+2026-10-30 22:57:45.850 T:80420 warning <general>: Failed to save the default settings to special://profile/guisettings.xml
+2026-10-30 22:57:45.850 T:80420 critical <general>: CProfileManager: unable to load settings for profile "Guest Room"
+--- creating the folder by hand and restarting Kodi ---
+--- retry with the folder present: LoadProfile 'Guest Room' ---
+
+--- the guest profile now has its own userdata ---
+home/.kodi/userdata/profiles/Guest Room
+home/.kodi/userdata/profiles/Guest Room/Database
+home/.kodi/userdata/profiles/Guest Room/Database/Addons33.db
+home/.kodi/userdata/profiles/Guest Room/Database/CDDB
+home/.kodi/userdata/profiles/Guest Room/Database/Epg16.db
+home/.kodi/userdata/profiles/Guest Room/Database/MyMusic82.db
+home/.kodi/userdata/profiles/Guest Room/Database/MyVideos121.db
+home/.kodi/userdata/profiles/Guest Room/Database/TV40.db
+home/.kodi/userdata/profiles/Guest Room/Database/Textures13.db
+home/.kodi/userdata/profiles/Guest Room/Database/ViewModes6.db
+home/.kodi/userdata/profiles/Guest Room/Savestates
+home/.kodi/userdata/profiles/Guest Room/Thumbnails
+home/.kodi/userdata/profiles/Guest Room/Thumbnails/0
+home/.kodi/userdata/profiles/Guest Room/Thumbnails/1
+home/.kodi/userdata/profiles/Guest Room/Thumbnails/2
+home/.kodi/userdata/profiles/Guest Room/Thumbnails/3
+home/.kodi/userdata/profiles/Guest Room/Thumbnails/4
+home/.kodi/userdata/profiles/Guest Room/Thumbnails/5
+home/.kodi/userdata/profiles/Guest Room/Thumbnails/6
+home/.kodi/userdata/profiles/Guest Room/Thumbnails/7
+--- and its own, separate, empty library ---
+0 movies in guest library (master has 3)
+--- log line confirming the load ---
+2026-10-30 22:58:30.691 T:80771    info <general>: special://profile/ is mapped to: special://masterprofile/profiles/Guest Room/

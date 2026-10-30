@@ -1,0 +1,14 @@
+=== t02: web interface + JSON-RPC ===
+Fri Oct 30 22:55:31 UTC 2026
+--- no credentials ---
+
+--- with credentials: Ping ---
+{"id":1,"jsonrpc":"2.0","result":"pong"}
+--- Application.GetProperties ---
+{"id":2,"jsonrpc":"2.0","result":{"muted":false,"name":"Kodi","version":{"major":20,"minor":5,"revision":"20240927-nogitfound","tag":"stable"},"volume":100}}
+--- JSONRPC.Version ---
+{"id":3,"jsonrpc":"2.0","result":{"version":{"major":13,"minor":0,"patch":0}}}
+--- Settings.GetSettingValue services.webserverport ---
+{"id":4,"jsonrpc":"2.0","result":{"value":18090}}
+--- Chorus web interface (GET / with auth) ---
+<title>Kodi</title>

@@ -1,0 +1,13 @@
+=== t00: provenance ===
+Fri Oct 30 22:52:46 UTC 2026
+Source: Ubuntu 24.04 (noble) packages, downloaded with apt-get --download-only and unpacked with dpkg -x into ./root — nothing installed system-wide.
+kodi:
+  Installed: (none)
+  Candidate: 2:20.5+dfsg-1ubuntu1
+  Version table:
+
+Kodi from Debian Media Center 20.5 Debian package version: 2:20.5+dfsg-1ubuntu1
+Copyright (C) 2005-2021 Team Kodi from Debian - http://kodi.tv
+
+131
+bundled addons counted above
